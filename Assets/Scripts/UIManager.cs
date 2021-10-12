@@ -10,6 +10,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     TMP_Text mainText;
+
+    [SerializeField]
+    GameObject promt;
     
     public void ShowDialogue (string text)
     {
@@ -22,6 +25,16 @@ public class UIManager : MonoBehaviour
     {
         textBox.SetActive(false);
         PlayerMovement.canMove = true;
+    }
+
+    public void ShowPrompt ()
+    {
+        promt.SetActive(true);
+    }
+
+    public void HidePrompt ()
+    {
+        promt.SetActive(false);
     }
 
     void Update()

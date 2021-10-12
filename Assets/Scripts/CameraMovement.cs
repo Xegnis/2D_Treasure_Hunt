@@ -27,7 +27,6 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         distance = ((Vector2)cameraT.position - (Vector2)playerT.position).magnitude;
-        Debug.Log(tracking);
     }
 
     void FixedUpdate()
