@@ -41,7 +41,7 @@ public class CameraMovement : MonoBehaviour
             newPos = (cameraT.position + (playerT.position - cameraT.position) * trackingSpeed / 60);
             newPos.z = cameraT.position.z;
             cameraT.position = newPos;
-            if (distance < 0.005)
+            if (distance < 0.1)
             {
                 tracking = false;
             }
