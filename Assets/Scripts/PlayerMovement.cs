@@ -19,8 +19,9 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
 
     float xDir;
+    float lastFacing = 1;
 
-     bool isGrounded = false, canJump = false, isDashing = false, hasDashed = false;
+    bool isGrounded = false, canJump = false, isDashing = false, hasDashed = false;
 
     void Awake()
     {
@@ -30,14 +31,24 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         xDir = Input.GetAxisRaw("Horizontal");
+        if (xDir != 0)
+        {
+            lastFacing = xDir;
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrounded)
                 canJump = true;
             else if (!hasDashed)
             {
+                hasDashed = true;
                 isDashing = true;
                 dashDir = new Vector2(xDir, 0);
+                if (dashDir.x == 0)
+                {
+                    dashDir = new Vector2(lastFacing, 0);
+                }
+                rb.gravityScale = 0;
             }
         }
 
@@ -49,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isDashing = false;
             dashLeft = dashDuration;
+            rb.gravityScale = 1;
         }
     }
 
