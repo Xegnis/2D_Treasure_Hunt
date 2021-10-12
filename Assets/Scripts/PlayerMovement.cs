@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float jumpForce;
     [SerializeField]
+    float maxFallSpeed;
+    [SerializeField]
     float dashSpeed;
     [SerializeField]
     float dashDuration;
@@ -20,16 +22,22 @@ public class PlayerMovement : MonoBehaviour
 
     float xDir;
     float lastFacing = 1;
+    float graivityScale = 0;
 
     bool isGrounded = false, canJump = false, isDashing = false, hasDashed = false;
+
+    public static bool canMove = true;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        graivityScale = rb.gravityScale;
     }
 
     void Update()
     {
+        if (!canMove)
+            return;
         xDir = Input.GetAxisRaw("Horizontal");
         if (xDir != 0)
         {
@@ -60,17 +68,22 @@ public class PlayerMovement : MonoBehaviour
         {
             isDashing = false;
             dashLeft = dashDuration;
-            rb.gravityScale = 1;
+            rb.gravityScale = graivityScale;
         }
     }
 
     void FixedUpdate()
     {
+        if (!canMove)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
         if (canJump)
         {
             Jump();
         }
-        rb.velocity = new Vector2(xDir * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(xDir * moveSpeed, Mathf.Max(rb.velocity.y, -maxFallSpeed));
         if (isDashing)
         {
             rb.velocity = dashDir * dashSpeed;
