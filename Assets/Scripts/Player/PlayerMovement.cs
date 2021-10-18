@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
         {
             lastFacing = xDir;
         }
+        transform.eulerAngles = new Vector3(0, 90 + lastFacing * 90, 0);
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrounded)
