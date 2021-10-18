@@ -15,6 +15,10 @@ public class PlayerHealth : MonoBehaviour
     [Header("UI")]
     [SerializeField]
     Image blackScreen;
+    [SerializeField]
+    GameObject heart;
+    [SerializeField]
+    Transform canvas;
 
     [Header("Position")]
     [SerializeField]
@@ -22,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     Transform startingPoint;
 
+    static GameObject[] hearts = new GameObject[10];
     static float countdown;
     static bool isCooling = false;
     static int health;
@@ -30,6 +35,12 @@ public class PlayerHealth : MonoBehaviour
     {
         health = maxHealth;
         countdown = cooldown;
+        for (int i = 0; i < health; i ++)
+        {
+            hearts[i] = Instantiate(heart);
+            hearts[i].transform.SetParent(canvas);
+            hearts[i].transform.localPosition = new Vector3(-600 + i * 50f, 300f, 0);
+        }
     }
 
     void Update()
@@ -65,10 +76,14 @@ public class PlayerHealth : MonoBehaviour
         {
             health -= damage;
             isCooling = true;
-            Debug.Log(health);
+            Destroy(hearts[health]);
         }
         else
         {
+            for (int i = 0; i < health; i ++)
+            {
+                Destroy(hearts[i]);
+            }
             health = 0;
 
         }

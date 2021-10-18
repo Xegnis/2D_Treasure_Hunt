@@ -57,7 +57,6 @@ public class CameraShake : MonoBehaviour
 
 	public static void Shake (float time, float intensity)
     {
-		Debug.Log("Time: " + time + ", intensity: " + intensity);
 		shakeDuration = time;
 		shakeAmount = intensity;
     }
