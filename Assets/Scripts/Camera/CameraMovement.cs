@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    [SerializeField]
-    Transform playerT;
+    public Transform playerT;
 
     [SerializeField]
     float deadZone;
@@ -45,5 +44,6 @@ public class CameraMovement : MonoBehaviour
                 tracking = false;
             }
         }
+
     }
 }

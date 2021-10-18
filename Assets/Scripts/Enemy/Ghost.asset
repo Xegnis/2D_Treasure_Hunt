@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Ghost
   m_EditorClassIdentifier: 
   enemyName: Ghost
-  health: 3
+  health: 1
   moveSpeed: 3

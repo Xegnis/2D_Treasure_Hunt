@@ -15,9 +15,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float dashDuration;
 
-    [SerializeField]
-    Transform startingPoint;
-
     float dashLeft;
     Vector2 dashDir;
 
@@ -102,17 +99,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Ground"))
         {
             hasDashed = false;
             isGrounded = true;
-        }
-
-        if (collision.CompareTag("Spike"))
-        {
-            GetComponent<Transform>().position = startingPoint.position;
         }
     }
 

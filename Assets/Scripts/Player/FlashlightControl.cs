@@ -19,6 +19,8 @@ public class FlashlightControl : MonoBehaviour
 
     void Update()
     {
+        if (!PlayerMovement.canMove)
+            return;
         if (timeLeft <= 0)
         {
             timeLeft = 0;

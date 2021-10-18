@@ -6,6 +6,10 @@ public class Ghost : Enemy
 {
     float facing = 1;
 
+    [Header("Damage")]
+    [SerializeField]
+    int damage;
+
     [Header("Raycast")]
     [SerializeField]
     float raycastOffset;
@@ -17,6 +21,8 @@ public class Ghost : Enemy
     {
         facing = CheckFacing();
         facing = facing * CheckRaycast();
+
+        transform.eulerAngles = new Vector3(0, 90 + facing * 90, 0);
 
         if (health <= 0)
         {
