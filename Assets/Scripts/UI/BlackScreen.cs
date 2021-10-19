@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BlackScreen : MonoBehaviour
 {
@@ -14,6 +15,6 @@ public class BlackScreen : MonoBehaviour
     {
         im.color = new Color(0, 0, 0, Mathf.Max(0, im.color.a - Time.deltaTime));
         if (im.color.a <= 0)
-            Destroy(gameObject);
+            im.enabled = false;
     }
 }

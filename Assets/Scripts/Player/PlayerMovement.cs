@@ -34,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
         graivityScale = rb.gravityScale;
     }
 
+    void Start()
+    {
+        canMove = true;
+    }
+
     void Update()
     {
         if (!canMove)

@@ -26,10 +26,16 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     Transform startingPoint;
 
+    SpriteRenderer playerSpr;
     static GameObject[] hearts = new GameObject[10];
     static float countdown;
     static bool isCooling = false;
     static int health;
+
+    void Awake()
+    {
+        playerSpr = GetComponentInParent<SpriteRenderer>();
+    }
 
     void Start()
     {
@@ -40,6 +46,7 @@ public class PlayerHealth : MonoBehaviour
             hearts[i] = Instantiate(heart);
             hearts[i].transform.SetParent(canvas);
             hearts[i].transform.localPosition = new Vector3(-600 + i * 50f, 300f, 0);
+            hearts[i].transform.SetAsFirstSibling();
         }
     }
 
@@ -47,11 +54,13 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isCooling)
         {
+            playerSpr.color = new Color(playerSpr.color.r, playerSpr.color.g, playerSpr.color.b, 0.6f);
             countdown -= Time.deltaTime;
             if (countdown <= 0)
             {
                 isCooling = false;
                 countdown = cooldown;
+                playerSpr.color = new Color(playerSpr.color.r, playerSpr.color.g, playerSpr.color.b, 1f);
             }
         }
 
@@ -64,7 +73,9 @@ public class PlayerHealth : MonoBehaviour
                 SceneManager.LoadScene("LoseScreen");
             }
         }
-        
+
+        if (blackScreen != null)
+            blackScreen.transform.SetAsLastSibling();
     }
 
     public static void takeDamage (int damage)
@@ -76,7 +87,10 @@ public class PlayerHealth : MonoBehaviour
         {
             health -= damage;
             isCooling = true;
-            Destroy(hearts[health]);
+            for (int i = 0; i < damage; i ++)
+            {
+                Destroy(hearts[health + i]);
+            }
         }
         else
         {

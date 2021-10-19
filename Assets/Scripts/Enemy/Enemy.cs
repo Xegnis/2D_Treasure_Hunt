@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 {
     [Header("Enemy Type")]
     [SerializeField]
-    EnemyScriptableObject data;
+    public EnemyScriptableObject data;
 
     protected float health;
     protected float moveSpeed;
@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        
     }
 
     void Start()

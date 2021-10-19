@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public enum Marker {key1, key2, key3};
 
     static bool[] progress = new bool[3];
+
+    [SerializeField]
+    TMP_Text text;
+
+    static int keyCollected;
 
     void Start()
     {
@@ -16,9 +22,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        text.text = "Keys to Collect: " + (3 - keyCollected);
+    }
+
     public static void Progress (Marker marker)
     {
         progress[(int)marker] = true;
+        keyCollected++;
     }
 
     public static bool checkProgress ()

@@ -12,29 +12,40 @@ public class UIManager : MonoBehaviour
     TMP_Text mainText;
 
     [SerializeField]
-    GameObject promt;
-    
-    public void ShowDialogue (string text)
+    GameObject prompt;
+
+
+    static GameObject s_textBox;
+    static TMP_Text s_mainText;
+    static GameObject s_prompt;
+    void Awake()
     {
-        mainText.text = text;
-        textBox.SetActive(true);
+        s_textBox = textBox;
+        s_mainText = mainText;
+        s_prompt = prompt;
+    }
+
+    public static void ShowDialogue (string text)
+    {
+        s_mainText.text = text;
+        s_textBox.SetActive(true);
         PlayerMovement.canMove = false;
     }
 
     void HideDialogue ()
     {
-        textBox.SetActive(false);
+        s_textBox.SetActive(false);
         PlayerMovement.canMove = true;
     }
 
-    public void ShowPrompt ()
+    public static void ShowPrompt ()
     {
-        promt.SetActive(true);
+        s_prompt.SetActive(true);
     }
 
-    public void HidePrompt ()
+    public static void HidePrompt ()
     {
-        promt.SetActive(false);
+        s_prompt.SetActive(false);
     }
 
     void Update()

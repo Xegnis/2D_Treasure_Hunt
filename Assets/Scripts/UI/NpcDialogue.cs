@@ -6,10 +6,7 @@ using UnityEngine.SceneManagement;
 public class NpcDialogue : MonoBehaviour
 {
     [SerializeField]
-    string dialogue;
-
-    [SerializeField]
-    UIManager um;
+    string[] dialogue;
 
     void OnTriggerStay2D(Collider2D collision)
     {
@@ -17,7 +14,12 @@ public class NpcDialogue : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
-                um.ShowDialogue(dialogue + "\n\n[R] to close");
+                string toShow = "";
+                for (int i = 0; i < dialogue.Length; i ++)
+                {
+                    toShow += dialogue[i] + "\n";
+                }
+                UIManager.ShowDialogue(toShow + "\n[R] to close");
             }
             if (gameObject.CompareTag("Finish") && GameManager.checkProgress())
             {
@@ -30,7 +32,7 @@ public class NpcDialogue : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            um.ShowPrompt();
+            UIManager.ShowPrompt();
         }
     }
 
@@ -38,7 +40,7 @@ public class NpcDialogue : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            um.HidePrompt();
+            UIManager.HidePrompt();
         }
     }
 }

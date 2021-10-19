@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlashlightControl : MonoBehaviour
+public class Flashlight : MonoBehaviour
 {
     [SerializeField]
     GameObject flashlight;
