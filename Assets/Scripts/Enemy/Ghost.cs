@@ -49,10 +49,8 @@ public class Ghost : Enemy
     {
         if (rb.velocity.x > 0)
             return 1;
-        else if (rb.velocity.x < 0)
-            return -1;
         else
-            return 0;
+            return -1;
     }
 
     int CheckRaycast ()

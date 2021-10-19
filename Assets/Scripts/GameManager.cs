@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         {
             progress[i] = false;
         }
+        keyCollected = 0;
     }
 
     void Update()

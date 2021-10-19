@@ -52,6 +52,10 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            SceneManager.LoadScene("Stage_0");
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            SceneManager.LoadScene("Stage_1");
         if (isCooling)
         {
             playerSpr.color = new Color(playerSpr.color.r, playerSpr.color.g, playerSpr.color.b, 0.6f);
