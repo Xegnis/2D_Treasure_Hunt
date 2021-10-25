@@ -10,7 +10,7 @@ public class NpcDialogue : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.J))
         {
             if (collision.CompareTag("Player"))
             {
@@ -32,7 +32,7 @@ public class NpcDialogue : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            UIManager.ShowPrompt();
+            UIManager.ShowPrompt("J");
         }
     }
 

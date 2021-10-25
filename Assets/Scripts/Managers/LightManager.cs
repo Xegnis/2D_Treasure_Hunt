@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class LightManager : MonoBehaviour
 {
     [SerializeField]
-    Light globalLight;
+    Light2D globalLight;
 
-    private Collider2D lightCollider;
+    private SpriteMask lightMask;
 
     [SerializeField]
     float startIntensity;
@@ -21,33 +21,32 @@ public class LightManager : MonoBehaviour
 
     void Awake()
     {
-        lightCollider = GetComponent<Collider2D>();
+        lightMask = globalLight.GetComponent<SpriteMask>();
     }
 
     void Start()
     {
-        globalLight.intensity = startIntensity;
         if (startIntensity >= lightIntensity)
         {
-            lightCollider.enabled = true;
+            lightMask.enabled = true;
         }
         else
         {
-            lightCollider.enabled = false;
+            lightMask.enabled = false;
         }
     }
 
-    public void toggleLight ()
+    public void ToggleLight ()
     {
         if (globalLight.intensity == darkIntensity)
         {
             globalLight.intensity = lightIntensity;
-            lightCollider.enabled = true;
+            lightMask.enabled = true;
         }
         else
         {
             globalLight.intensity = darkIntensity;
-            lightCollider.enabled = false;
+            lightMask.enabled = false;
         }
     }
 

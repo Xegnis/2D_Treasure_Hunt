@@ -9,20 +9,20 @@ public class UIManager : MonoBehaviour
     GameObject textBox;
 
     [SerializeField]
-    TMP_Text mainText;
-
-    [SerializeField]
     GameObject prompt;
 
 
     static GameObject s_textBox;
     static TMP_Text s_mainText;
     static GameObject s_prompt;
+    static TMP_Text s_promptText;
+
     void Awake()
     {
         s_textBox = textBox;
-        s_mainText = mainText;
+        s_mainText = s_textBox.GetComponentInChildren<TMP_Text>();
         s_prompt = prompt;
+        s_promptText = s_prompt.GetComponentInChildren<TMP_Text>();
     }
 
     public static void ShowDialogue (string text)
@@ -38,9 +38,10 @@ public class UIManager : MonoBehaviour
         PlayerMovement.canMove = true;
     }
 
-    public static void ShowPrompt ()
+    public static void ShowPrompt (string prompt)
     {
         s_prompt.SetActive(true);
+        s_promptText.text = prompt;
     }
 
     public static void HidePrompt ()
