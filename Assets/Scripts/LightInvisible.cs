@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class LightInvisible : MonoBehaviour
 {
-    On TriggerEnter2D
+    
 }
