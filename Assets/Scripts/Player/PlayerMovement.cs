@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 dashDir;
 
     Rigidbody2D rb;
+    Animator animator;
 
     float xDir;
     float lastFacing = 1;
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         graivityScale = rb.gravityScale;
+        animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -41,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        animator.SetBool("isJumping", !isGrounded);
+        animator.SetFloat("Speed", rb.velocity.magnitude);
         if (!canMove)
             return;
         xDir = Input.GetAxisRaw("Horizontal");
