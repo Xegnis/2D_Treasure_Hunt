@@ -7,8 +7,6 @@ public class Ghost : Enemy
     float facing = 1;
 
     [Header("Damage")]
-    [SerializeField]
-    int damage;
 
     [Header("Raycast")]
     [SerializeField]

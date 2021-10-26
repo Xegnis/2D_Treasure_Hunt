@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Flashlight : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class Flashlight : MonoBehaviour
 
     [SerializeField]
     float initialTime;
+
+    [SerializeField]
+    float maxTime;
+
+    [SerializeField]
+    Image chargeLeft;
 
     float timeLeft;
 
@@ -19,6 +26,9 @@ public class Flashlight : MonoBehaviour
 
     void Update()
     {
+        timeLeft = Mathf.Min(timeLeft, maxTime);
+        chargeLeft.fillAmount = timeLeft / maxTime;
+        
         if (!PlayerMovement.canMove)
             return;
         if (timeLeft <= 0)
@@ -32,6 +42,12 @@ public class Flashlight : MonoBehaviour
             flashlight.SetActive(!flashlight.activeSelf);
         }
 
-        timeLeft -= Time.deltaTime;
+        if (flashlight.activeSelf)
+            timeLeft -= Time.deltaTime;
+    }
+
+    public void addTime (float time)
+    {
+        timeLeft += time;
     }
 }
