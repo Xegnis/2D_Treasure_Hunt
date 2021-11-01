@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject prompt;
 
+    [SerializeField]
+    GameObject objective;
+
 
     static GameObject s_textBox;
     static TMP_Text s_mainText;
@@ -52,8 +55,9 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R) && !PlayerMovement.canMove)
-        {
             HideDialogue();
-        }
+
+        if (Input.GetKeyDown(KeyCode.O) && objective != null)
+            objective.SetActive(!objective.activeSelf);
     }
 }

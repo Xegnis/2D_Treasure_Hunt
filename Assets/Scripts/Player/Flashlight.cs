@@ -37,7 +37,7 @@ public class Flashlight : MonoBehaviour
             flashlight.SetActive(false);
             return;
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             flashlight.SetActive(!flashlight.activeSelf);
         }

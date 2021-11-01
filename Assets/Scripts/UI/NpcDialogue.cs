@@ -21,7 +21,7 @@ public class NpcDialogue : MonoBehaviour
                 }
                 UIManager.ShowDialogue(toShow + "\n[R] to close");
             }
-            if (gameObject.CompareTag("Finish") && GameManager.checkProgress())
+            if (gameObject.CompareTag("Finish") && GameManagerLvl1.checkProgress())
             {
                 SceneManager.LoadScene("End");
             }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4859169872950304837}
   - component: {fileID: 4859169872950304838}
   - component: {fileID: 4859169872950304834}
+  - component: {fileID: 6921076761798460381}
   m_Layer: 6
   m_Name: Ghost
   m_TagString: Enemy
@@ -146,6 +147,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 6e80fa286d8051c49a8c39e472177ff0, type: 2}
-  damage: 0
   raycastOffset: 1
   raycastDistance: 1
+--- !u!95 &6921076761798460381
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859169872950304835}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f392653a28b78bb45b3636f487f85f28, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -5,13 +5,13 @@ using UnityEngine;
 public class ChangeProgress : MonoBehaviour
 {
     [SerializeField]
-    GameManager.Marker id;
+    GameManagerLvl1.Marker id;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            GameManager.Progress(id);
+            GameManagerLvl1.Progress(id);
             Destroy(gameObject);
         }
     }
