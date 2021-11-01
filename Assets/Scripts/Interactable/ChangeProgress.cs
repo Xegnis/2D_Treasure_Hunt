@@ -7,11 +7,17 @@ public class ChangeProgress : MonoBehaviour
     [SerializeField]
     GameManagerLvl1.Marker id;
 
+    bool add = false;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            GameManagerLvl1.Progress(id);
+            if (!add)
+            {
+                GameManagerLvl1.Progress(id);
+            }
+            add = true;
             Destroy(gameObject);
         }
     }

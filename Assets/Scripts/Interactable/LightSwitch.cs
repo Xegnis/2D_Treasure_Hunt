@@ -8,6 +8,12 @@ public class LightSwitch : MonoBehaviour
     [SerializeField] 
     UnityEvent lightSwitch;
 
+    [SerializeField]
+    AudioSource soundEffect;
+
+    [SerializeField]
+    AudioClip sound;
+
     bool pressed, colliding;
  
      void Awake() 
@@ -33,6 +39,8 @@ public class LightSwitch : MonoBehaviour
         {
             if (pressed)
             {
+                soundEffect.clip = sound;
+                soundEffect.Play();
                 lightSwitch.Invoke();
                 pressed = false;
             }

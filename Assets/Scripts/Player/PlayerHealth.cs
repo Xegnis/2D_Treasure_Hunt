@@ -32,9 +32,12 @@ public class PlayerHealth : MonoBehaviour
     static bool isCooling = false;
     static int health;
 
+    static AudioSource audiosource;
+
     void Awake()
     {
         playerSpr = GetComponentInParent<SpriteRenderer>();
+        audiosource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -86,6 +89,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isCooling)
             return;
+        audiosource.Play();
         CameraShake.Shake();
         if (health > damage)
         {
@@ -103,7 +107,6 @@ public class PlayerHealth : MonoBehaviour
                 Destroy(hearts[i]);
             }
             health = 0;
-
         }
     }
 

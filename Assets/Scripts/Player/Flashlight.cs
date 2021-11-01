@@ -17,6 +17,12 @@ public class Flashlight : MonoBehaviour
     [SerializeField]
     Image chargeLeft;
 
+    [SerializeField]
+    AudioSource soundEffect;
+
+    [SerializeField]
+    AudioClip sound;
+
     float timeLeft;
 
     void Start()
@@ -40,6 +46,8 @@ public class Flashlight : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             flashlight.SetActive(!flashlight.activeSelf);
+            soundEffect.clip = sound;
+            soundEffect.Play();
         }
 
         if (flashlight.activeSelf)

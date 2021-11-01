@@ -123,5 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f0710ff6b4ee94cbf5d3cf1bc1e438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashlight: {fileID: 0}
+  flashlight: {fileID: 268357333925814362, guid: 788ab357ae560f245bd61b6f047c4a4b, type: 3}
   charge: 10

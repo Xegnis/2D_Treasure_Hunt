@@ -23,7 +23,7 @@ public class NpcDialogue : MonoBehaviour
             }
             if (gameObject.CompareTag("Finish") && GameManagerLvl1.checkProgress())
             {
-                SceneManager.LoadScene("End");
+                SceneManager.LoadScene("Scene_2");
             }
         }
     }

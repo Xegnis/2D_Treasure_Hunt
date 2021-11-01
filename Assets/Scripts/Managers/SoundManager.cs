@@ -5,12 +5,5 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField]
-    AudioSource soundEffect;
 
-    
-    void Start()
-    {
-        
-    }
 }

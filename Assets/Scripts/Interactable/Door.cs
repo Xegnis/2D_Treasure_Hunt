@@ -33,7 +33,6 @@ public class Door : MonoBehaviour
         for (int i = 0; i < password.Length; i++)
         {
             keyHoles[i].sprite = keyImages[combination[i]];
-            Debug.Log((int)password[i]);
         }
             
     }

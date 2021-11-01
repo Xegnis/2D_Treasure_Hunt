@@ -12,7 +12,14 @@ public class GameManagerLvl1 : MonoBehaviour
     [SerializeField]
     TMP_Text text;
 
+    static AudioSource audiosource;
+
     static int keyCollected;
+
+    void Awake()
+    {
+        audiosource = GetComponent<AudioSource>();
+    }
 
     void Start()
     {
@@ -32,6 +39,7 @@ public class GameManagerLvl1 : MonoBehaviour
     {
         progress[(int)marker] = true;
         keyCollected++;
+        audiosource.Play();
     }
 
     public static bool checkProgress ()

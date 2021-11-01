@@ -29,11 +29,14 @@ public class PlayerMovement : MonoBehaviour
 
     public static bool canMove = true;
 
+    AudioSource audiosource;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         graivityScale = rb.gravityScale;
         animator = GetComponent<Animator>();
+        audiosource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -84,6 +87,17 @@ public class PlayerMovement : MonoBehaviour
             dashLeft = dashDuration;
             rb.gravityScale = graivityScale;
         }
+
+        if (rb.velocity.magnitude > 0 && isGrounded)
+        {
+            if (!audiosource.isPlaying)
+                audiosource.Play();
+        }
+        else
+        {
+            audiosource.Pause();
+        }
+
     }
 
     void FixedUpdate()
@@ -121,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
             jumpReleased = false;
         }
     }
+
 
     void Jump ()
     {
