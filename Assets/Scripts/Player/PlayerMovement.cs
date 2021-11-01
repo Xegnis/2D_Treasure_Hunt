@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     float lastFacing = 1;
     float graivityScale = 0;
 
-    bool isGrounded = false, canJump = false, isDashing = false, hasDashed = false;
+    bool isGrounded = false, canJump = false, isDashing = false, hasDashed = false, jumpReleased = false;
 
     public static bool canMove = true;
 
@@ -69,6 +69,10 @@ public class PlayerMovement : MonoBehaviour
                 rb.gravityScale = 0;
             }
         }
+
+        if (canJump)
+            if (Input.GetKeyUp(KeyCode.Space))
+                jumpReleased = true;
 
         if (isDashing && dashLeft > 0)
         {
@@ -114,12 +118,13 @@ public class PlayerMovement : MonoBehaviour
         {
             hasDashed = false;
             isGrounded = true;
+            jumpReleased = false;
         }
     }
 
     void Jump ()
     {
-        if (!isGrounded)
+        if (!isGrounded || jumpReleased)
             return;
         canJump = false;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
