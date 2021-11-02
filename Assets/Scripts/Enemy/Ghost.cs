@@ -15,12 +15,14 @@ public class Ghost : Enemy
     float raycastDistance;
 
     SpriteRenderer spr;
-
+    AudioSource audiosource;
+    bool dead = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spr = GetComponent<SpriteRenderer>();
+        audiosource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -32,7 +34,14 @@ public class Ghost : Enemy
 
         spr.color = new Color(spr.color.r, spr.color.g, spr.color.b, Mathf.Max(0.2f, health / data.health));
 
-        if (health <= 0)
+        if (health <= 0 && dead == false)
+        {
+            audiosource.Play();
+            health = 0.1f;
+            dead = true;
+        }
+
+        if (dead && !audiosource.isPlaying)
         {
             Destroy(gameObject);
         }

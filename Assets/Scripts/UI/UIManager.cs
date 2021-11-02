@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -59,5 +60,13 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.O) && objective != null)
             objective.SetActive(!objective.activeSelf);
+
+     
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            SceneManager.LoadScene("Stage_0");
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            SceneManager.LoadScene("Stage_1");
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+            SceneManager.LoadScene("Scene_2");
     }
 }

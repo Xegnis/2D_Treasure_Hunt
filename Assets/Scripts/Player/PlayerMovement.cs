@@ -48,6 +48,15 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetBool("isJumping", !isGrounded);
         animator.SetFloat("Speed", rb.velocity.magnitude);
+        if (rb.velocity.magnitude > 0 && isGrounded)
+        {
+            if (!audiosource.isPlaying)
+                audiosource.Play();
+        }
+        else
+        {
+            audiosource.Pause();
+        }
         if (!canMove)
             return;
         xDir = Input.GetAxisRaw("Horizontal");
